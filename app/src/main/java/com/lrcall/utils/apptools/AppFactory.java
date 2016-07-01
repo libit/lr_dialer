@@ -19,9 +19,9 @@ public abstract class AppFactory
 
 	protected AppFactory()
 	{
-		if (ShellUtils.checkRootPermission())
-			appInterface = new RootAppImpl();
-		else
+//		if (ShellUtils.checkRootPermission())
+//			appInterface = new RootAppImpl();
+//		else
 			appInterface = new UnRootAppImpl();
 	}
 
