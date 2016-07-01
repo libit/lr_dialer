@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Libit保留所有版权，如有疑问联系QQ：308062035
+  ~ Copyright (c) 2015.
+  -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lrcall.ui.ActivityWebView">
+    <include layout="@layout/layout_title"/>
+    <FrameLayout
+        android:id="@+id/layout_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.external.xlistview.XListView
+            android:id="@+id/xlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            android:divider="#00000000"
+            android:fadingEdge="none"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"
+            android:scrollbars="none">
+        </com.external.xlistview.XListView>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/process"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:max="100"
+            android:padding="0dip"/>
+    </FrameLayout>
+</LinearLayout>

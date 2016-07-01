@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Libit保留所有版权，如有疑问联系QQ：308062035
+  ~ Copyright (c) 2016.
+  -->
+<LinearLayout
+    android:id="@+id/dialog_root_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginBottom="10dip"
+    android:layout_marginLeft="40dip"
+    android:layout_marginRight="40dip"
+    android:layout_marginTop="10dip"
+    android:background="@drawable/body_cont"
+    android:orientation="vertical">
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:divider="#ffeeebeb"
+        android:dividerHeight="1dip"
+        android:fadingEdge="none"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:scrollbars="none"/>
+</LinearLayout>

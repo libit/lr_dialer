@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Libit保留所有版权，如有疑问联系QQ：308062035
+  ~ Copyright (c) 2016.
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_online1"
+        android:icon="@drawable/default_header"
+        android:orderInCategory="100"
+        android:title=""
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_online2"
+        android:icon="@drawable/default_header"
+        android:orderInCategory="101"
+        android:title=""
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_online3"
+        android:icon="@drawable/default_header"
+        android:orderInCategory="102"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_online4"
+        android:icon="@drawable/default_header"
+        android:orderInCategory="103"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_online5"
+        android:icon="@drawable/default_header"
+        android:orderInCategory="104"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_online6"
+        android:icon="@drawable/default_header"
+        android:orderInCategory="105"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+</menu>

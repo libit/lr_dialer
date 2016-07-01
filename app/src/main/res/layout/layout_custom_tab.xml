@@ -1,0 +1,22 @@
+<!--
+  ~ Libit保留所有版权，如有疑问联系QQ：308062035
+  ~ Copyright (c) 2016.
+  -->
+<com.ogaclejapan.smarttablayout.SmartTabLayout
+    android:id="@+id/viewpagertab"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:stl_dividerColor="@color/transparent"
+    app:stl_dividerThickness="0dp"
+    app:stl_indicatorColor="@color/white_20"
+    app:stl_indicatorCornerRadius="26dp"
+    app:stl_indicatorGravity="center"
+    app:stl_indicatorInterpolation="smart"
+    app:stl_indicatorThickness="26dp"
+    app:stl_indicatorWithoutPadding="true"
+    app:stl_underlineColor="@color/transparent"
+    app:stl_underlineThickness="0dp"/>
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Libit保留所有版权，如有疑问联系QQ：308062035
+  ~ Copyright (c) 2016.
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_add_contact"
+        android:icon="@android:drawable/ic_menu_add"
+        android:orderInCategory="101"
+        android:title="添加联系人"
+        app:showAsAction="always"/>
+</menu>

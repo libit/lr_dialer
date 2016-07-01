@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Libit保留所有版权，如有疑问联系QQ：308062035
+  ~ Copyright (c) 2016.
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:orderInCategory="100"
+        android:title="搜索"
+        app:showAsAction="always"/><!--app:actionViewClass="com.lrcall.ui.SearchContentView"-->
+    <item
+        android:id="@+id/action_add_contact"
+        android:icon="@android:drawable/ic_menu_add"
+        android:orderInCategory="101"
+        android:title="添加联系人"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:orderInCategory="102"
+        android:title="程序设置"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_share"
+        android:icon="@android:drawable/ic_menu_share"
+        android:orderInCategory="103"
+        android:title="好友分享"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_check_update"
+        android:icon="@android:drawable/ic_menu_upload"
+        android:orderInCategory="104"
+        android:title="检查更新"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_exit"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:orderInCategory="105"
+        android:title="退出程序"
+        app:showAsAction="never"/>
+</menu>

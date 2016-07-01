@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Libit保留所有版权，如有疑问联系QQ：308062035
+  ~ Copyright (c) 2016.
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_cancel"
+        android:orderInCategory="100"
+        android:title="取消"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_ok"
+        android:orderInCategory="101"
+        android:title="完成"
+        app:showAsAction="always"/>
+</menu>
