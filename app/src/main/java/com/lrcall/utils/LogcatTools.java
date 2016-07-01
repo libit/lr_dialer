@@ -6,7 +6,6 @@ import com.lrcall.utils.apptools.AppFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,7 +21,7 @@ public class LogcatTools implements Thread.UncaughtExceptionHandler
 	private static LogcatTools instance = null;
 	private Thread.UncaughtExceptionHandler mDefaultHandler;// 系统默认的UncaughtException处理类
 	private LogDumper mLogDumper = null;
-	private int mPId;
+	private final int mPId;
 	private String fileName;
 
 	private LogcatTools()
@@ -119,15 +118,20 @@ public class LogcatTools implements Thread.UncaughtExceptionHandler
 		mLogDumper.start();
 		//只保留最近3个log日志
 		String dir = FileTools.getDir(MyConfig.getLogcatFolder());
+		if (StringTools.isNull(dir))
+		{
+			LogcatTools.error(TAG, "日志目录为空！");
+			return;
+		}
 		File directory = new File(dir);
-		if (directory.isDirectory())
+		if (directory != null && directory.isDirectory())
 		{
 			File[] files = directory.listFiles();
 			int count = files.length;
-			final int MAX_SAVE = 3;
+			final int MAX_SAVE = 5;
 			if (count > MAX_SAVE)
 			{
-				List<File> saveFiles = new ArrayList<File>();
+				List<File> saveFiles = new ArrayList<>();
 				for (int i = 0; i < count; i++)
 				{
 					saveFiles.add(i, files[i]);
@@ -197,7 +201,7 @@ public class LogcatTools implements Thread.UncaughtExceptionHandler
 		private Process logcatProc;
 		private BufferedReader mReader = null;
 		private boolean mRunning = true;
-		private String mPID;
+		private final String mPID;
 		private FileOutputStream out = null;
 
 		public LogDumper(String pid)
@@ -241,7 +245,7 @@ public class LogcatTools implements Thread.UncaughtExceptionHandler
 					fileName = getFileName();
 					out = new FileOutputStream(FileTools.getFile(MyConfig.getLogcatFolder(), fileName));
 				}
-				catch (FileNotFoundException e)
+				catch (Exception e)
 				{
 					e.printStackTrace();
 				}
