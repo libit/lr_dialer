@@ -7,6 +7,7 @@ package com.lrcall.ui;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -59,22 +60,25 @@ public class ActivityMain extends MyBaseActivity implements MyActionBarDrawerTog
 		return instance;
 	}
 
-	@NeedsPermission({Manifest.permission.READ_CONTACTS, Manifest.permission.READ_CALL_LOG})
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		viewInit();
+		//		viewInit();
 		instance = this;
 		EventBus.getDefault().register(this);
+		ActivityMainPermissionsDispatcher.viewInitWithCheck(this);
 	}
 
 	@Override
 	protected void onPause()
 	{
 		super.onPause();
-		mDrawerLayout.closeDrawers();
+		if (mDrawerLayout != null)
+		{
+			mDrawerLayout.closeDrawers();
+		}
 	}
 
 	@Override
@@ -83,6 +87,14 @@ public class ActivityMain extends MyBaseActivity implements MyActionBarDrawerTog
 		instance = null;
 		EventBus.getDefault().unregister(this);
 		super.onDestroy();
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+	{
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		// NOTE: delegate the permission handling to generated method
+		ActivityMainPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
 	}
 
 	@Override
@@ -137,6 +149,8 @@ public class ActivityMain extends MyBaseActivity implements MyActionBarDrawerTog
 		return super.onOptionsItemSelected(item);
 	}
 
+	//	@NeedsPermission({Manifest.permission_group.CONTACTS, Manifest.permission_group.PHONE, Manifest.permission_group.STORAGE})
+	@NeedsPermission({Manifest.permission.READ_CONTACTS, Manifest.permission.READ_CALL_LOG, Manifest.permission.WRITE_EXTERNAL_STORAGE})
 	@Override
 	synchronized protected void viewInit()
 	{

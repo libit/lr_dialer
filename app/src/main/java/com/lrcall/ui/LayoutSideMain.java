@@ -34,7 +34,6 @@ import java.util.List;
 /**
  * Created by libit on 16/6/29.
  */
-
 public class LayoutSideMain extends LinearLayout implements View.OnClickListener, IAjaxDataResponse
 {
 	private Context mContext;
@@ -93,8 +92,8 @@ public class LayoutSideMain extends LinearLayout implements View.OnClickListener
 			setbLogin(false);
 			tvName.setText("请登录！");
 		}
-//		List<ContactInfo> contactInfoList = ContactsFactory.getInstance().getContactInfos(mContext);
-//		tvBackupCount.setText(contactInfoList.size() + "");
+		List<ContactInfo> contactInfoList = ContactsFactory.getInstance().getContactInfos(mContext);
+		tvBackupCount.setText(contactInfoList.size() + "");
 	}
 
 	@Override
