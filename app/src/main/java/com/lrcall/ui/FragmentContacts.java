@@ -88,16 +88,16 @@ public class FragmentContacts extends MyBaseFragment implements View.OnClickList
 		//		});
 		rootView.findViewById(R.id.search_del).setOnClickListener(this);
 		getContacts(null);
-//		xListView.setOnTouchListener(new View.OnTouchListener()
-//		{
-//			@Override
-//			public boolean onTouch(View v, MotionEvent event)
-//			{
-//				LogcatTools.debug("onTouch", "xListView->action:" + event.getAction() + ",y:" + event.getY());
-//				alpha.onTansferTouch(event);
-//				return false;
-//			}
-//		});
+		//		xListView.setOnTouchListener(new View.OnTouchListener()
+		//		{
+		//			@Override
+		//			public boolean onTouch(View v, MotionEvent event)
+		//			{
+		//				LogcatTools.debug("onTouch", "xListView->action:" + event.getAction() + ",y:" + event.getY());
+		//				alpha.onTansferTouch(event);
+		//				return false;
+		//			}
+		//		});
 		super.viewInit(rootView);
 	}
 
@@ -122,6 +122,24 @@ public class FragmentContacts extends MyBaseFragment implements View.OnClickList
 		@Override
 		protected List<ContactInfo> doInBackground(Long... params)
 		{
+//			int hasWriteContactsPermission = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_CONTACTS);
+//			if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED)
+//			{
+//				if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_CONTACTS))
+//				{
+//					showMessageOKCancel("You need to allow access to Contacts", new DialogInterface.OnClickListener()
+//					{
+//						@Override
+//						public void onClick(DialogInterface dialog, int which)
+//						{
+//							ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_CODE_ASK_PERMISSIONS);
+//						}
+//					});
+//					return null;
+//				}
+//				ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_CODE_ASK_PERMISSIONS);
+//				return null;
+//			}
 			List<ContactInfo> contactInfoList;
 			if (StringTools.isNull(condition))
 			{
