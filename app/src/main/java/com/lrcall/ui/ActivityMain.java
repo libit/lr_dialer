@@ -7,7 +7,6 @@ package com.lrcall.ui;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -24,8 +23,8 @@ import android.widget.Toast;
 import com.external.xlistview.XListView;
 import com.lrcall.appcall.R;
 import com.lrcall.contacts.ContactsFactory;
+import com.lrcall.enums.EventTypeLayoutSideMain;
 import com.lrcall.models.TabInfo;
-import com.lrcall.nums.EventTypeLayoutSideMain;
 import com.lrcall.ui.customer.MyActionBarDrawerToggle;
 import com.lrcall.utils.LogcatTools;
 import com.lrcall.utils.apptools.AppFactory;
@@ -41,9 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import permissions.dispatcher.NeedsPermission;
-import permissions.dispatcher.RuntimePermissions;
 
-@RuntimePermissions
 public class ActivityMain extends MyBaseActivity implements MyActionBarDrawerToggle.ActionBarDrawerToggleStatusChanged, XListView.IXListViewListener
 {
 	private List<TabInfo> tabInfos = new ArrayList<>();
@@ -68,7 +65,8 @@ public class ActivityMain extends MyBaseActivity implements MyActionBarDrawerTog
 		//		viewInit();
 		instance = this;
 		EventBus.getDefault().register(this);
-		ActivityMainPermissionsDispatcher.viewInitWithCheck(this);
+		viewInit();
+//		ActivityMainPermissionsDispatcher.viewInitWithCheck(this);
 	}
 
 	@Override
@@ -89,13 +87,13 @@ public class ActivityMain extends MyBaseActivity implements MyActionBarDrawerTog
 		super.onDestroy();
 	}
 
-	@Override
-	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
-	{
-		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		// NOTE: delegate the permission handling to generated method
-		ActivityMainPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
-	}
+//	@Override
+//	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+//	{
+//		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//		// NOTE: delegate the permission handling to generated method
+//		ActivityMainPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+//	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)

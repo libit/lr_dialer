@@ -27,15 +27,6 @@ public class MyApplication extends Application
 	{
 		super.onCreate();
 		instance = this;
-		new Thread("splash")
-		{
-			@Override
-			public void run()
-			{
-				super.run();
-				LogcatTools.getInstance().start();
-			}
-		}.start();
 	}
 
 	@Override

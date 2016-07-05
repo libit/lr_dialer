@@ -27,8 +27,6 @@
 -libraryjars libs/pinyin4j-2.5.0.jar
 -libraryjars libs/gson-2.2.4.jar
 -libraryjars libs/org.apache.http.legacy.jar
--libraryjars libs/signpost-commonshttp4-1.2.1.1.jar
--libraryjars libs/signpost-core-1.2.1.1.jar
 
 -keepattributes *Annotation*
 -keep public class com.google.vending.licensing.ILicensingService
@@ -62,10 +60,6 @@
 
 -dontwarn android.support.**
 
-#-keep public class com.lrcall.models.AppInfo
-#-keep public class com.lrcall.models.BlackAppInfo
-#-keep public class com.lrcall.models.HideAppInfo
-#-keep public class com.lrcall.models.BackupInfo
 -keep public class com.lrcall.models.*
 -keepclassmembers public class com.lrcall.models.* {
    void set*(***);

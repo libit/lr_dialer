@@ -127,6 +127,10 @@ public class LogcatTools implements Thread.UncaughtExceptionHandler
 		if (directory != null && directory.isDirectory())
 		{
 			File[] files = directory.listFiles();
+			if (files == null)
+			{
+				return;
+			}
 			int count = files.length;
 			final int MAX_SAVE = 5;
 			if (count > MAX_SAVE)

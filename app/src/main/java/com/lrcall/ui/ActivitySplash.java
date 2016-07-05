@@ -4,6 +4,7 @@
  */
 package com.lrcall.ui;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +16,13 @@ import android.view.animation.Animation;
 import android.widget.TextView;
 
 import com.lrcall.appcall.R;
+import com.lrcall.utils.LogcatTools;
+import com.lrcall.utils.apptools.AppFactory;
 
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
+
+@RuntimePermissions
 public class ActivitySplash extends Activity
 {
 	private TextView tvStart;
@@ -26,7 +33,20 @@ public class ActivitySplash extends Activity
 		super.onCreate(savedInstanceState);
 		final View rootView = View.inflate(this, R.layout.activity_splash, null);
 		setContentView(rootView);
-		initView();//渐变
+		if (AppFactory.isCompatible(23))
+		{
+			ActivitySplashPermissionsDispatcher.initViewWithCheck(this, rootView);
+		}
+		else
+		{
+			initView(rootView);
+		}
+	}
+
+	@NeedsPermission({Manifest.permission.READ_CONTACTS, Manifest.permission.READ_CALL_LOG, Manifest.permission.WRITE_EXTERNAL_STORAGE})
+	protected void initView(View rootView)
+	{
+		tvStart = (TextView) findViewById(R.id.tv_start);
 		AlphaAnimation aa = new AlphaAnimation(0.5f, 1.0f);
 		aa.setDuration(200);
 		rootView.setAnimation(aa);
@@ -48,75 +68,18 @@ public class ActivitySplash extends Activity
 				mHandler.sendEmptyMessage(INIT_RESULT);
 			}
 		});
-		//		new Thread("splash")
-		//		{
-		//			@Override
-		//			public void run()
-		//			{
-		//				super.run();
-		//				String text = getString(R.string.app_name);
-		//				final int tm = 250;
-		//				if (!StringTools.isNull(text))
-		//				{
-		//					int size = text.length();
-		//					for (int i = 0; i < size; i++)
-		//					{
-		//						try
-		//						{
-		//							Thread.sleep(tm);
-		//						}
-		//						catch (InterruptedException e)
-		//						{
-		//							e.printStackTrace();
-		//						}
-		//						finally
-		//						{
-		//							//							Message msg = Message.obtain();
-		//							//							msg.obj = text.substring(0, i + 1);
-		//							//							msg.what = CHANGE_TEXT;
-		//							//							mHandler.sendMessage(msg);
-		//						}
-		//					}
-		//					try
-		//					{
-		//						Thread.sleep(tm);
-		//					}
-		//					catch (InterruptedException e)
-		//					{
-		//						e.printStackTrace();
-		//					}
-		//					finally
-		//					{
-		//						mHandler.sendEmptyMessage(INIT_RESULT);
-		//					}
-		//				}
-		//				else
-		//				{
-		//					try
-		//					{
-		//						Thread.sleep(tm * 4);
-		//					}
-		//					catch (InterruptedException e)
-		//					{
-		//						e.printStackTrace();
-		//					}
-		//					finally
-		//					{
-		//						mHandler.sendEmptyMessage(INIT_RESULT);
-		//					}
-		//				}
-		//			}
-		//		}.start();
+		new Thread("splash")
+		{
+			@Override
+			public void run()
+			{
+				super.run();
+				LogcatTools.getInstance().start();
+			}
+		}.start();
 	}
 
-	protected void initView()
-	{
-		tvStart = (TextView) findViewById(R.id.tv_start);
-	}
-
-	private final int CHANGE_TEXT = 1000;
 	private final int INIT_RESULT = 1001;
-	private final String DATA_INIT_RESULT = "data.init.result";
 	private final Handler mHandler = new Handler()
 	{
 		@Override
@@ -129,12 +92,6 @@ public class ActivitySplash extends Activity
 				{
 					startActivity(new Intent(ActivitySplash.this, ActivityMain.class));
 					finish();
-					break;
-				}
-				case CHANGE_TEXT:
-				{
-					String text = (String) msg.obj;
-					tvStart.setText(text);
 					break;
 				}
 			}

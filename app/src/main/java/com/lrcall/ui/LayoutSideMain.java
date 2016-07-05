@@ -21,7 +21,7 @@ import com.lrcall.appcall.services.IAjaxDataResponse;
 import com.lrcall.appcall.services.UserService;
 import com.lrcall.contacts.ContactsFactory;
 import com.lrcall.models.ContactInfo;
-import com.lrcall.nums.EventTypeLayoutSideMain;
+import com.lrcall.enums.EventTypeLayoutSideMain;
 import com.lrcall.ui.customer.ToastView;
 import com.lrcall.utils.GsonTools;
 import com.lrcall.utils.PreferenceUtils;
