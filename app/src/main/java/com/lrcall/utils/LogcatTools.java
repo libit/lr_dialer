@@ -115,7 +115,10 @@ public class LogcatTools implements Thread.UncaughtExceptionHandler
 		{
 			mLogDumper = new LogDumper(String.valueOf(mPId));
 		}
-		mLogDumper.start();
+		if (!mLogDumper.isAlive())
+		{
+			mLogDumper.start();
+		}
 		//只保留最近3个log日志
 		String dir = FileTools.getDir(MyConfig.getLogcatFolder());
 		if (StringTools.isNull(dir))

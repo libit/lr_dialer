@@ -4,7 +4,6 @@
  */
 package com.lrcall.ui;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -38,8 +37,6 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import permissions.dispatcher.NeedsPermission;
 
 public class ActivityMain extends MyBaseActivity implements MyActionBarDrawerToggle.ActionBarDrawerToggleStatusChanged, XListView.IXListViewListener
 {
@@ -148,7 +145,7 @@ public class ActivityMain extends MyBaseActivity implements MyActionBarDrawerTog
 	}
 
 	//	@NeedsPermission({Manifest.permission_group.CONTACTS, Manifest.permission_group.PHONE, Manifest.permission_group.STORAGE})
-	@NeedsPermission({Manifest.permission.READ_CONTACTS, Manifest.permission.READ_CALL_LOG, Manifest.permission.WRITE_EXTERNAL_STORAGE})
+//	@NeedsPermission({Manifest.permission.READ_CONTACTS, Manifest.permission.READ_CALL_LOG, Manifest.permission.WRITE_EXTERNAL_STORAGE})
 	@Override
 	synchronized protected void viewInit()
 	{
